@@ -1,4 +1,4 @@
-# ML
+# multi-label-confusion-matrix
 
 In multi-label classification tasks, knowing what pairs of labels are often swapped (e.g. the ground truth is labeled "A" and predicted is labeled "B").
 Here, I propose a synthetic confusion matrix that computes such model evaluation. With such a function, one can easily see what labels are often swapped.
