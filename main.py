@@ -7,11 +7,12 @@ def compute_MLconfusion_matrix(y_true, y_pred):
     """Compute the multi-label confusion matrix between groud truth labels and predictions
 
     Arguments:
-        y_true {list} -- list of ground truth label (one-hot encoded)
-        y_pred {list} -- list of predictions (one-hot encoded). Should be the same "shape" as y_true.
+        y_true {list} -- Ground truth (correct) target values (one-hot encoded).
+        y_pred {list} -- Estimated targets as returned by a classifier (one-hot encoded). Should be the same "shape" as y_true.
 
     Returns:
-        ndarray -- 2D array corresponding to the confusion matrix
+        ndarray -- Multi-label confusion matrix whose i-th row and j-th column entry indicates the number of samples with true 
+                multi-label containing i-th class and predicted label containing j-th class. See the `README.md` file for more the computation details.
     """
     assert len(y_true) == len(
         y_pred), f"Not the same amount of predictions ({len(y_pred)}) as ground truth labels ({len(y_true)})"
