@@ -7,7 +7,7 @@ def compute_MLconfusion_matrix(y_true, y_pred):
     """Compute the multi-label confusion matrix between groud truth labels and predictions
 
     Arguments:
-        y_true {list} -- Ground truth (correct) target values (one-hot encoded). Should be 2D (list of list).
+        y_true {list} -- Ground truth (correct) target values (one-hot encoded). Should be 2D (list of list of int or bool).
         y_pred {list} -- Estimated targets as returned by a classifier (one-hot encoded). Should be the same "shape" as y_true.
 
     Returns:
@@ -25,6 +25,9 @@ def compute_MLconfusion_matrix(y_true, y_pred):
     cm = np.zeros((num_classes, num_classes))
 
     for true_labels, pred_labels in zip(y_true, y_pred):
+        # int conversion
+        true_labels = [int(x) for x in true_labels] #int casting
+        pred_labels = [int(y) for y in pred_labels]
         # label presnt in both ground truth and predictions
         right_preds = [k & l for k, l in zip(true_labels, pred_labels)]
         right_preds_indices = [i for i, x in enumerate(
